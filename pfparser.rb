@@ -4,6 +4,7 @@ require 'trollop'
 
 mods = {}
 needsparse = []
+oldvalue = String
 
 # Get Args
 opts = Trollop::options do
@@ -11,6 +12,7 @@ opts = Trollop::options do
   opt :module, "Module to modify", :type => String
   opt :param, "Param to change", :type => String
   opt :data, "Data for param to change", :type => String
+  opt :returnoldvalue, "Print the previous module version"
 end
 
 Trollop::die :filename, "must be supplied" unless not opts[:filename].nil?
@@ -65,6 +67,7 @@ end
 # Update module data
 if mods.keys.include?(opts[:module])
   if mods[ opts[:module] ].keys.include?( opts[:param] )
+    oldvalue=mods[opts[:module]][opts[:param]]
     mods[ opts[:module] ][ opts[:param] ] = opts[:data]
   else
     puts "No parameter '#{opts[:param]}' found for module #{opts[:module]} in Puppetfile!\nAvailable params #{mods[ opts[:module] ].keys - ['type']}"
@@ -106,4 +109,8 @@ end
 
 File.open(opts[:filename], "w") do |file|
     file.puts newpf
+end
+
+if opts[:returnoldvalue] == true
+  puts oldvalue
 end

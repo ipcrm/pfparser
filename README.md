@@ -9,12 +9,12 @@ The purpose of this script is to update the versions (or other parameters) for P
 ```
 <ruby> ./pfparser.rb -h
 Options:
-  -f, --filename=<s>    File to process
-  -m, --module=<s>      Module to modify
-  -p, --param=<s>       Param to change
-  -d, --data=<s>        Data for param to change
-  -h, --help            Show this message
-
+  -f, --filename=<s>      File to process
+  -m, --module=<s>        Module to modify
+  -p, --param=<s>         Param to change
+  -d, --data=<s>          Data for param to change
+  -r, --returnoldvalue    Print the previous module version
+  -h, --help              Show this message
 ```
 
 _-p_: When using this option, if your updating a Forge module use the term `version`.  Otherwise if your updating a module coming from a VCS solution you can edit any param (such as :git,:ref,:tag, etc...)
