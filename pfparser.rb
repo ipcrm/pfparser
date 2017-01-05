@@ -46,7 +46,7 @@ needsparse.each_with_index do |d,i|
         next
       end
 
-      if match = nd.match(/^\s+(:\w+)[\s+]?=>\s+?[',"]?([A-z\-\@\.\:\/0-9]+)[',"]?[\s+]?[,]?[\s+]?$/)
+      if match = nd.match(/^\s+(:\w+)[\s+]?=>\s+?[',"]?([A-z\-\@\.\:\/0-9]+)?[',"]?[\s+]?[,]?[\s+]?$/)
         param,data = match.captures
         mods[mod][param] = data
       end
@@ -56,7 +56,7 @@ needsparse.each_with_index do |d,i|
     end
 
   else
-    if not d.match(/^\s+(:\w+)[\s+]?=>\s+?[',"]?([A-z\-\@\.\:\/0-9]+)[',"]?[\s+]?[,]?[\s+]?$/) and not d.match(/^#/) and not d.match(/^$/)
+    if not d.match(/^\s+(:\w+)[\s+]?=>\s+?[',"]?([A-z\-\@\.\:\/0-9]+)?[',"]?[\s+]?[,]?[\s+]?$/) and not d.match(/^#/) and not d.match(/^$/)
       moreparse << d
     end
   end
