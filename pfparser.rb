@@ -87,7 +87,13 @@ mods.keys.each do |m|
     k_l = ( mods[m].keys.length - 1 )
     mods[m].keys.each_with_index do |k,ki|
       if k != 'type'
-        newpf << "  #{k} => '#{mods[m][k]}'#{"," if ki != k_l}\n"
+        line = "  #{k} => "
+        line << "'" if not mods[m][k].start_with?(':')
+        line << "#{mods[m][k]}"
+        line << "'" if not mods[m][k].start_with?(':')
+        line << "," if ki != k_l
+        line << "\n"
+        newpf << line
       end
     end
   end
